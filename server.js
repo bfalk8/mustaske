@@ -23,14 +23,14 @@ app.get('/', function(req, res){
 io.sockets.on('connection', function (socket) {
 
 	//user sets name
-	socket.on('setPseudo', function (data) {
+	io.on('setPseudo', function (data) {
 	    socket.set('pseudo', data);
 	});
 
-	socket.on('message', function (message) {
-    	socket.get('pseudo', function (error, name) {
+	io.on('message', function (message) {
+    	io.get('pseudo', function (error, name) {
 	        var data = { 'message' : message, pseudo : name };
-	        socket.broadcast.emit('message', data);
+	        io.broadcast.emit('message', data);
 	        console.log("user " + name + " send this : " + message);
     	})
 	});
