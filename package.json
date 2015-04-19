@@ -1,0 +1,30 @@
+{
+  "name": "cse110_sup",
+  "version": "1.0.0",
+  "description": "Application that helps field questions from students in a classroom envirnoment",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.12.3",
+    "jade": "^1.9.2",
+    "shrinkwrap": "^0.4.0",
+    "socket.io": "^1.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyly/cse110_sup.git"
+  },
+  "keywords": [
+    "education"
+  ],
+  "author": "SUP",
+  "license": "GNU v3.0",
+  "bugs": {
+    "url": "https://github.com/Kyly/cse110_sup/issues"
+  },
+  "homepage": "https://github.com/Kyly/cse110_sup#readme"
+}
