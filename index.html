@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Mustaske by Kyly</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Mustaske</h1>
+      <h2 class="project-tagline">Live chat and clicker application for use in class.</h2>
+      <a href="https://github.com/Kyly/mustaske" class="btn">View on GitHub</a>
+      <a href="https://github.com/Kyly/mustaske/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Kyly/mustaske/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><a href="http://www.youtube.com/watch?v=-QMxtmNfIBI"><img src="http://img.youtube.com/vi/-QMxtmNfIBI/0.jpg" alt="Mustaske Dev Story"></a></p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>You need to install <strong>npm</strong>, <strong>node</strong>, and a few other goodies to install
+Mustaske on your server. First you need to install python software properties.</p>
+
+<pre><code>sudo apt-get install python-software-properties
+</code></pre>
+
+<p>You can install the node stuff.</p>
+
+<pre><code>sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install nodejs
+</code></pre>
+
+<p>Now you should have the most up to date version of node.js. Lets move on to
+the good stuff.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ol>
+<li>Clone the repository to your local directory.
+<code>
+git clone https://github.com/Kyly/mustaske.git
+</code>
+</li>
+<li>To install the dependencies run the following.
+<code>
+cd mustaske
+npm install
+</code>
+</li>
+<li>Now you can start the app with.
+<code>
+npm start
+</code>
+Now your up and rolling! Open up your browser and make a room. If you are on
+local host go to <code>localhost:3000</code>.</li>
+</ol>
+
+<h2>
+<a id="faqs" class="anchor" href="#faqs" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQS</h2>
+
+<ul>
+<li><p><em>Why are the top question on my computer different then the ones on my
+naighbors?</em> Due to server badwidth <em>top questions</em>, although correctly accounted on the
+backend, are not guaranteed to be the same on all displays. We call
+<em>Near Real Time</em> updates. Over a given period of time polls across all desktops.</p></li>
+<li><p>Why do I have to use a room ID and not room name? The room ids are your rooms
+unique identifier. These are required because more
+one user might want "Joes Meat Shack" and well that's fine, who are we to judge.
+So name your room whatever you like and it will show up in the sites topbar but
+to join the room you will need to use the unique room id.</p></li>
+</ul>
+
+<h2>
+<a id="debugging" class="anchor" href="#debugging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Debugging</h2>
+
+<p>To set the log level for socket.io you can run the app with:</p>
+
+<pre><code>  DEBUG=* npm start
+</code></pre>
+
+<p>This allows you to see fine grain what request and responses the server is making
+along with details about things like who is in a room.</p>
+
+<h2>
+<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<h3>
+<a id="front-end-tests-with-selenium-and-python" class="anchor" href="#front-end-tests-with-selenium-and-python" aria-hidden="true"><span class="octicon octicon-link"></span></a>Front end tests with Selenium and Python</h3>
+
+<p>To run frontend test you will need to have selenium, pyhton selenium webdriver,
+and Firefox browser.</p>
+
+<ul>
+<li>
+<a href="http://www.seleniumhq.org/projects/ide/">Download Selenium</a>.</li>
+<li>To install python selenium webdriver on linux run <code>pip install selenium</code> for
+more information see <a href="http://selenium-python.readthedocs.org/en/latest/installation.html">selenium python</a>.</li>
+</ul>
+
+<p>Then run the following script:</p>
+
+<pre><code>  npm run-script test-front
+</code></pre>
+
+<p>If this is your first time running the script you will need to make it executable
+by entering the following:</p>
+
+<pre><code>  sudo chmod +x test/runscripts.sh
+</code></pre>
+
+<p>Add your own python selenium tests to <code>test/selenium_src/</code> directory.</p>
+
+<h3>
+<a id="server-side-tests-with-mocha" class="anchor" href="#server-side-tests-with-mocha" aria-hidden="true"><span class="octicon octicon-link"></span></a>Server side tests with Mocha</h3>
+
+<p>First you will need to download mocha to your workstation.</p>
+
+<pre><code>  sudo npm install -g mocha
+</code></pre>
+
+<p>Notice we are using <code>-g</code> which global installs <em>mocha</em> on you workstation.</p>
+
+<p>Then to run the test simply enter the following from the projects root directory.</p>
+
+<pre><code>  npm run-script test-back
+</code></pre>
+
+<p>You see something like:</p>
+
+<pre><code>&gt; supapp@0.0.0 test /home/kyly/GDrive/sp15/cse110/supapp
+&gt; mocha ./test/*.js
+
+
+
+  Rooms
+    #addRoom()
+      ✓ should have room in questionrepo after addRoom is called.
+    #hasRoom()
+      ✓ should have room in questionrepo after addRoom is called.
+    #purgeRoom()
+      ✓ should have room in questionrepo after addRoom is called.
+
+
+  3 passing (5ms)
+</code></pre>
+
+<p>Add your test to the <em>test</em> directory. If you need an example of how these
+should look check out the test in <code>roomstest.js</code>. We have a lot more
+assertion available to us so look up the documentation if you want to do
+something more complex.</p>
+
+<h3>
+<a id="run-all-test" class="anchor" href="#run-all-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run all test</h3>
+
+<p>To run all tests simply run:</p>
+
+<pre><code>  npm test
+</code></pre>
+
+<p>You will need to have <em>all dependencies installed</em>. For instruction follow the
+installation instruction.</p>
+
+<h2>
+<a id="our-story" class="anchor" href="#our-story" aria-hidden="true"><span class="octicon octicon-link"></span></a>Our Story</h2>
+
+<h4>
+<a id="the-mit-license-mit" class="anchor" href="#the-mit-license-mit" aria-hidden="true"><span class="octicon octicon-link"></span></a>The MIT License (MIT)</h4>
+
+<p>Copyright (c) 2015 Kyly Vass, Brandon Falk, Tanner Turner, Crystal Kwok,
+Daniel Lee, Jose Valdez, Chris Tetreault, Nick Gibson, Robert Kronebusch.</p>
+
+<p><a href="LICENSE.md">See license details here.</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Kyly/mustaske">Mustaske</a> is maintained by <a href="https://github.com/Kyly">Kyly</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
